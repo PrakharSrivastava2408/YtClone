@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Youtubeflex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+      .chpicandname{
+        display: flex;
+        width: 400px;
+        cursor: pointer;
+      }
+
+      .thumbclass{
+        width: 420px;
+        border-radius: 12px;
+        margin-right: 16px;
+        cursor: pointer;
+      }
+      .chpic{
+        width: 38px;
+        margin-top: 16px;
+        border-radius: 19px;
+        cursor: pointer;
+      }
+      .name{
+        font-family: Roboto,Ariel;
+        font-size: 18px;   
+        font-weight: 500; 
+        margin-left: 20px;
+        cursor: pointer;
+      }
+      .grid{
+        display: flex;
+        width: 100%;
+        padding-top: 40px;
+      }
+      body {
+        margin: 0;
+        margin-left: 100px;
+      }
+      .header{
+        display: flex;
+        height: 60px;
+        justify-content: space-between;
+        position: fixed;
+        background-color: white;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(214, 212, 212);
+        z-index: 100;
+      }
+      .left{
+        width: 150px;
+        display: flex;
+        margin-top: -24px;
+      }
+      .mid{
+        flex: 1;
+        display: flex;
+        margin-left: 50px;
+        max-width: 460px;
+        align-items: center;
+      }
+      .right{
+        width: 200px;
+        margin-left: 30px;
+        display: flex;
+      }
+      .menu{
+        width: 24px;
+        margin-left: 14px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .ytlogo{
+        margin-left: 22px;
+        width: 90px;
+        margin-top: 42px;
+        cursor: pointer;
+      }
+      .upload{
+        width: 24px;
+        cursor: pointer;
+      }
+      .ytapp{
+        width: 24px;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+      .noti{
+        margin-left: 20px;
+        width: 24px;
+        cursor: pointer;
+      }
+      .chlogo{
+        margin-left: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      .searchlogo{
+        height: 24px;
+        margin-left: -2px;
+        margin-top: 4px;
+      }
+      .audsearch{
+        height: 26px;
+        cursor: pointer;
+      }
+      .search{
+        flex: 1;
+        height: 36px;
+        border-radius: 2px;
+        border-width: 1px;
+        border-style: solid ;
+        border-color: rgb(192,192,192);
+        padding-left: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        box-shadow: inset 1px 2px 3px
+        rgba(0,0,0,0.05);
+      }
+      .searchbutton{
+        height: 40px;
+        width: 66px;
+        border-radius: 0px;
+        border-width: 1px;
+        border-style: solid ;
+        border-color: rgb(192,192,192);
+        border-left: none;
+        cursor: pointer;
+      }
+      .voicebutton{
+        margin-left: 10px;
+        height: 40px;
+        width: 40px;
+        border-style: solid ;
+        border-width: 1px;
+        border-color: rgb(192,192,192);
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      .searchbutton::placeholder{
+        font-family: Roboto,Arial;
+      }
+      .sidebar{
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 1830px;
+        bottom: 0;
+        border-right-width: 1.5px;
+        border-right-style: solid;
+        border-right-color: rgb(214, 212, 212);
+        font-size: 10px;
+      }
+      .home{
+        margin-top: 30px;
+        margin-left: 20px;
+        width: 24px;
+      }
+      .explore{
+        margin-top: 30px;
+        margin-left: 20px;
+        width: 24px;
+      }
+      .sub{
+        margin-top: 30px;
+        margin-left: 20px;
+        width: 24px;
+      }
+      .originals{
+        margin-top: 30px;
+        margin-left: 20px;
+        width: 24px;
+      }
+      .ytmusic{
+        margin-top: 30px;
+        margin-left: 20px;
+        width: 24px;
+      }
+      .library{
+        margin-top: 30px;
+        margin-left: 20px;
+        width: 24px;
+      }
+      p{
+        font-family: Roboto,Arial;
+      }
+      .runtime{
+        color: white;
+        background-color: black;
+        position: absolute;
+        top: 206px;
+        right: 26px;
+        padding: 2px;
+        border-radius: 4px;
+        font-family: Roboto,Arial;
+        font-weight: 500;
+        font-size: 14px;
+        z-index: 0;
+      }
+      a{
+        color: black;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="left">
+        <img class="menu" src="logo/hamburger-menu.svg">
+        <a href="https://www.youtube.com/" target=_main><img class="ytlogo " src="logo/youtube-logo.svg" ></a>
+      </div>
+      <div class="mid">
+        <input class="search"
+        type="text" placeholder="Search">
+        <button class="searchbutton">
+          <img class="searchlogo" src="logo/search.svg">
+        </button>
+        <button class="voicebutton">
+          <img class="audsearch" src="logo/voice-search-icon.svg">
+        </button>
+      </div>
+      <div class="right">
+        <img class="upload" src="logo/upload.svg">
+        <img class="ytapp" src="logo/youtube-apps.svg">
+        <img class="noti" src="logo/notifications (1).svg">
+        <img class="chlogo" src="logo/HD-wallpaper-ryomen-sukuna-jujutsu-kaisen (1).jpg">
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div style="cursor: pointer;">
+        <img class="home" src="logo/home.svg">
+        <p style="margin-left: 18px;
+        margin-top: -3px;">Home</p>
+        <img class="explore" src="logo/explore.svg">
+        <p style="margin-left: 15px;
+        margin-top: -3px;">Explore</p>
+        <img class="sub" src="logo/subscriptions.svg">
+        <p style="margin-left: 5px;
+        margin-top: -3px;">Subscriptions</p>
+        <img class="originals" src="logo/originals.svg">
+        <p style="margin-left: 14px;
+        margin-top: -3px;">Originals</p>
+        <img class="ytmusic" src="logo/youtube-music.svg">
+        <p style="font-size: 9px;
+        margin-left: 6px;
+        margin-top: -1px;">Youtube Music</p>
+        <img class="library" src="logo/library.svg">
+        <p style="margin-left: 18px;
+        margin-top: -3px;">Library</p>
+      </div>
+      
+    </div>
+    <div>
+      <div style="padding-top: 100px" class="grid">
+      <div>
+        <div style="position: relative;
+          cursor: pointer;">
+          <div class="runtime">6:31:24</div>
+          <a href="https://www.youtube.com/watch?v=G3e-cpL7ofc"><img class="thumbclass" src="thumbnails/YOUT.webp"></a>
+          
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@SuperSimpleDev">
+              <img class="chpic" src="channelpic/javacsschannelpic.jpg">
+            </a>
+          </div>
+          <div class="name">
+            <a style="text-decoration: none;"  href="https://www.youtube.com/watch?v=G3e-cpL7ofc">
+              <p style="margin-bottom: 0; text-decoration: none;">HTML & CSS Full Course-Beginner to Pro</p>
+            </a>
+            <a style="text-decoration: none;" href="https://www.youtube.com/@SuperSimpleDev"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">SuperSimpleDev</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">11M views • 2 years ago</p>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <div  style="position: relative;">
+        <div class="runtime">17:59</div>
+        <a href="https://www.youtube.com/watch?v=ndAQfTzlVjc"><img class="thumbclass" src="thumbnails/1th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@MrBeast"><img class="chpic" src="channelpic/1ch.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=ndAQfTzlVjc"><p style="margin-bottom: 0;">7 Days Stranded In A Cave</p></a>
+            <a href="https://www.youtube.com/@MrBeast">
+              <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">MrBeast</p>
+            </a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">47M views • 1 day ago</p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div>
+        <div  style="position: relative;">
+        <div class="runtime">15:33</div>
+        <a href="https://www.youtube.com/watch?v=K33eiOhjTPg"><img class="thumbclass" src="thumbnails/you3.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@AddictionToGaming"><img class="chpic" src="channelpic/ATG.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=K33eiOhjTPg"><p style="margin-bottom: 0;">Need For Speed: Most Wanted (2005) - Milestone Events - Ming (#6)</p></a>
+            <a href="https://www.youtube.com/@AddictionToGaming"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">
+              AddictionToGaming
+            </p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">115K views • 11 years ago
+              </p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">13:12</div>
+          <a href="https://www.youtube.com/watch?v=wPCEC9IPMps"><img class="thumbclass" src="thumbnails/2th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@FutureCanoe"><img class="chpic" src="channelpic/2ch.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=wPCEC9IPMps"><p style="margin-bottom: 0;">Most Viewed Recipe in This Universe
+            </p></a>
+            <a href="https://www.youtube.com/@FutureCanoe"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">FutureCanoe</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">2.3M views • 11 months ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="grid">
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">2:04:23</div>
+          <a href="https://www.youtube.com/watch?v=mlIUKyZIUUU"><img class="thumbclass" src="thumbnails/3th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@ApnaCollegeOfficial"><img class="chpic" src="channelpic/3ch.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=mlIUKyZIUUU"><p style="margin-bottom: 0;">OOPS Tutorial in One Shot | Object Oriented Programming | in C++...</p></a>
+            <a href="https://www.youtube.com/@ApnaCollegeOfficial"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">Apna College</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">596K views • 2 months ago</p>
+          </div>
+        </div>
+      </div>
+  
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">4:09</div>
+          <a href="https://www.youtube.com/watch?v=NHXUM-6a3dU"><img class="thumbclass" src="thumbnails/4th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <A href="https://www.youtube.com/@SMTOWN"><img class="chpic" src="channelpic/4ch.jpg"></A>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=NHXUM-6a3dU"><p style="margin-bottom: 0;">TAEYEON 태연 'Fine' MV</p></a>
+            <A href="https://www.youtube.com/@SMTOWN"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">SMTOWN</p></A>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">94M views • 7 years ago</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">32:06</div>
+          <a href="https://www.youtube.com/watch?v=gw4NpOYvLgI"><img class="thumbclass" src="thumbnails/5th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@youngji_boxmedia"><img class="chpic" src="channelpic/5ch.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=gw4NpOYvLgI"><p style="margin-bottom: 0;">[SUB] SAY🤘Lalisa (Please🙏) Love me [EP.25 #Youngji #Lisa] (ENG/JPN/TH/IND)</p></a>
+            <a href="https://www.youtube.com/@youngji_boxmedia"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">차린건 쥐뿔도 없지만</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">6.7M views • 3 days ago</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">28:16</div>
+          <a href="https://www.youtube.com/watch?v=jEGASy9Lyiw"><img class="thumbclass" src="thumbnails/6th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@Suits"><img class="chpic" src="channelpic/6ch.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=jEGASy9Lyiw"><p style="margin-bottom: 0;">Most Watched Season 1 Cases | Suits
+            </p></a>
+            <a href="https://www.youtube.com/@Suits"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">Suits Official</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">323K views • 3 weeks ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="grid">
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">24:04</div>
+          <a href="https://www.youtube.com/watch?v=H7HM5zTDG0Y"><img class="thumbclass" src="thumbnails/7th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <A href="https://www.youtube.com/@KBSKpop"><img class="chpic" src="channelpic/7ch.jpg"></A>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=H7HM5zTDG0Y"><p style="margin-bottom: 0;">[Leemujin Service] EP.125 BABYMONSTER RAMI | FOREVER, City Burns, Bloodsucker, LAST GOODBYE
+            </p></a>
+            <a href="https://www.youtube.com/@KBSKpop"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">KBS Kpop</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">1.9M views • 2 weeks ago</p>
+          </div>
+        </div>
+      </div>
+  
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">10:02</div>
+          <a href="https://www.youtube.com/watch?v=sgCnMO9GOiQ"><img class="thumbclass" src="thumbnails/8th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@BoxofficeMoviesScenes"><img class="chpic" src="channelpic/8ch.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=sgCnMO9GOiQ"><p style="margin-bottom: 0;">Our Favorites Scenes From John Wick 2 🌀 4K</p></a>
+            <a href="https://www.youtube.com/@BoxofficeMoviesScenes"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">
+              Boxoffice Movie Scenes</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">419K views • 1 month ago</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">3:29</div>
+          <a href="https://www.youtube.com/watch?v=NFnAuiklEug"><img class="thumbclass" src="thumbnails/9th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/@THEBLACKLABEL"><img class="chpic" src="channelpic/9ch.jpg"></a>
+          </div>
+          <div class="name">
+            <A href="https://www.youtube.com/watch?v=NFnAuiklEug"><p style="margin-bottom: 0;">TAEYANG - ‘Shoong! (feat. LISA of BLACKPINK)’ PERFORMANCE VIDEO
+            </p></A>
+            <a href="https://www.youtube.com/@THEBLACKLABEL"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">THEBLACKLABEL</p></a>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">152M views • 1 years ago</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div>
+        <div style="position: relative;
+        ">
+        <div class="runtime">3:09</div>
+          <a href="https://www.youtube.com/watch?v=fTc5tuEn6_U"><img class="thumbclass" src="thumbnails/10th.webp"></a>
+        </div>
+        <div class="chpicandname">
+          <div>
+            <a href="https://www.youtube.com/musicnnewkorea"><img class="chpic" src="channelpic/10ch.jpg"></a>
+          </div>
+          <div class="name">
+            <a href="https://www.youtube.com/watch?v=fTc5tuEn6_U"><p style="margin-bottom: 0;">[MV] CHEN (Chen) XPunch (Punch) - Everytime l Son of the Sun OST Part.2
+            </p></a>
+            <A href="https://www.youtube.com/musicnnewkorea"><p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-bottom: 0;">MUSIC&NEW 뮤직앤뉴</p></A>
+            <p style="margin-top: 10px;
+              font-weight: 400;
+              font-size: 15px;
+              color: grey;
+              margin-top: 6px;">254M views • 8 years ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
